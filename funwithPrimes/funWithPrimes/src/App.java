@@ -19,7 +19,7 @@ public class App {
         return true;
     }
 
-    public static void printPrimeTwins(Vector<Integer> victor){
+    public static void printPrimeTwinsVector(Vector<Integer> victor){
         for (int var = 0; var < (int) victor.size() - 1; var++) {
             if (victor.get(var) == victor.get((var + 1)) - 2) {
                 System.out.printf("(" + victor.get(var) + ", " + victor.get(var + 1) + "), ");
@@ -32,6 +32,19 @@ public class App {
 
         }
     }
+    public static void printPrimeTwinsField(Integer[] field){
+        for (int var = 0; var < field.length - 1; var++) {
+            if(field.length - 2 == var)
+            if (field[var] == field[var+1] - 2) {
+                System.out.printf("(" + field[var] + ", " + field[var + 1] + "), ");
+            } else if (var > 0 && field[var] == field[var - 1] + 2) {
+                System.out.printf("(" + field[var - 1] + ", " + field[var] + "), ");
+            } else {
+                System.out.printf(field[var] + ", ");
+            }
+        }
+    }
+    
 
     public static void primeGenerator(int end) {
         Vector<Integer> Primes = new Vector<>();
@@ -42,12 +55,12 @@ public class App {
                 Primes.add(i);
             }
         }
-        printPrimeTwins(Primes);
+        printPrimeTwinsVector(Primes);
     }
     public static void printTupel(int x, int y){
         System.out.print("("+x+","+y+"),");
     }
-    public static void nPrimeNumbers(int end){
+    public static void nPrimeNumbersVector(int end){
         Vector<Integer> Primes = new Vector<>();
         int Counter = 1;
         int i=2;
@@ -67,10 +80,32 @@ public class App {
             }
             i++;
         }
-        printPrimeTwins(Primes);
+        printPrimeTwinsVector(Primes);
+    }
+    public static void nPrimeNumbersField(int end){
+        Integer[] Primes = new Integer[end];
+        int Counter = 1;
+        int i=2;
+        int primeBeforeI = 0;
+        while (Counter < end) {
+            boolean isPrime = true;
+            isPrime=checkPrime1(i);
+            if (isPrime) {
+                Primes[Counter]=i;
+                Counter++;
+                if(i==primeBeforeI+2){
+                    printTupel(i,primeBeforeI);
+                }else{
+                    System.out.print(i+",");
+                } 
+                primeBeforeI=i;
+            }
+            i++;
+        }
+        printPrimeTwinsField(Primes);
     }
     
     public static void main(String[] args) {
-        nPrimeNumbers(1000000000);
+        nPrimeNumbersField(10000);
     }
 }
