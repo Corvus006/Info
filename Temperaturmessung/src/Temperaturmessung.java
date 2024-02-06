@@ -9,18 +9,23 @@ public class Temperaturmessung {
         Temperatur[i] = Math.random()*55-20;   
         }
     }
+
     public void Max(){
         double a= 35;
-        for (int i = 0; i < Temperatur.length; i++) {
-            a = (a > Temperatur[i]) ? Temperatur[i] : a;
+        for (double t: Temperatur) {
+            a = (a > t) ? t : a;
         }
+        System.out.println(a);
     }
+
     public void Min(){
         double a= -20;
         for (int i = 0; i < Temperatur.length; i++) {
             a = (a < Temperatur[i]) ? Temperatur[i] : a;
         }
+        System.out.println(a);
     }
+
     public void Durchschnitt(){
         double a =0;
         for (double d : Temperatur) {
@@ -29,7 +34,21 @@ public class Temperaturmessung {
         a /= Temperatur.length;
         System.out.println(a);
     }
-    public void printFeld(double[] d){
-
+    public void bubblesort(){
+        boolean isSorted= true;
+        do {
+            isSorted= true;
+            for (int i=1;i<(Temperatur.length);i++) {
+            if(Temperatur[i]<Temperatur[i-1]){
+                Temperatur[i-1]=Temperatur[i];
+                isSorted= false;
+            }
+        }
+        } while (!isSorted);
+        int i=1;
+        for ( double d : Temperatur) {
+            System.out.println(i +". "+ d+", ");
+            i++;
+        }
     }
 }
