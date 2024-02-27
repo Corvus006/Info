@@ -39,11 +39,11 @@ public class Temperaturmessung {
         do {
             isSorted= true;
             for (int i=1;i<(Temperatur.length);i++) {
-            if(Temperatur[i]<Temperatur[i-1]){
-                Temperatur[i-1]=Temperatur[i];
-                isSorted= false;
+                if(Temperatur[i]<Temperatur[i-1]){
+                    Temperatur[i-1]=Temperatur[i];
+                    isSorted= false;
+                }
             }
-        }
         } while (!isSorted);
         int i=1;
         for ( double d : Temperatur) {
