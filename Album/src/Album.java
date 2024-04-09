@@ -4,6 +4,7 @@ public class Album {
     boolean Plätze[];
     Vector<Integer> Mehrfach = new Vector<>(5);
     int AnzahlGekauft;
+
     public Album(int Anzahl){
         Plätze = new boolean[Anzahl];
         AnzahlGekauft=0;
@@ -12,7 +13,6 @@ public class Album {
             b = false;
         }
     }
-
 
     public Vector<Integer> getBeklebt(){
         Vector<Integer> Beklebt = new Vector<Integer>();
@@ -64,8 +64,7 @@ public class Album {
             System.out.print(Sticker+", ");
         }
     }
-    public void printleer(){
-
+    public void printLeer(){
         for (int Sticker:this.getFrei()) {
             System.out.print(Sticker+", ");
         }
